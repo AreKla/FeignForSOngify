@@ -7,7 +7,6 @@ import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.event.EventListener;
 
-
 @SpringBootApplication
 @EnableFeignClients
 @Log4j2
@@ -25,7 +24,8 @@ public class FeignForSongifyApplication {
 
     @EventListener(ApplicationStartedEvent.class)
     public void makeRequest() {
-        SongList songExamples = songifyProxy.showAllSongs();
-        log.info(songExamples);
+        log.info(songifyProxy.showAllSongs());
+        System.out.println("------------------");
+        log.info(songifyProxy.getById(2));
     }
 }
