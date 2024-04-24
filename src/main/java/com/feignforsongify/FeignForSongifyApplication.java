@@ -25,7 +25,6 @@ public class FeignForSongifyApplication {
     @EventListener(ApplicationStartedEvent.class)
     public void makeRequest() {
         log.info(songifyProxy.showAllSongs());
-        System.out.println("------------------");
         log.info(songifyProxy.getById(2));
     }
 }
