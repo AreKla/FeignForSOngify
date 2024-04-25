@@ -20,9 +20,19 @@ public interface SongifyProxy {
     @PostMapping("/songs")
     Song addSong(@RequestBody CreateNewSongDto song);
 
-    //    @RequestMapping(method = RequestMethod.POST, value = "/api/quote")
-    //    ResponseEntity<QuoteExample> addQuote(@RequestBody QuoteValue quote);
-    //
-    //    @DeleteMapping("/api/quote/{id}")
-    //    Marker deleteById(@PathVariable("id") long id);
+    @DeleteMapping("/songs/{id}")
+    void deleteSongByPathVariable(@PathVariable("id") long id);
+
+    @DeleteMapping("/songs")
+    void deleteByQueryParam(@RequestParam("id") long id);
+
+    @PutMapping("/songs/{id}")
+    Song putSongById(@PathVariable("id") long id, @RequestBody PutSongByIdDto song);
+
+    @PatchMapping("/songs/{id}")
+    Song patchSongById(@PathVariable("id") long id, @RequestBody PatchSongByIdDto song);
+
+    @PatchMapping("/songs/{id}")
+    ResponseEntity<PartiallyUpdateSongResponseDto> partiallyUpdateSong(@PathVariable("id") Integer id,
+                                                                       @RequestBody PartiallyUpdateSongRequestDto request);
 }
