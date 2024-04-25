@@ -25,6 +25,12 @@ public class FeignForSongifyApplication {
     @EventListener(ApplicationStartedEvent.class)
     public void makeRequest() {
         log.info(songifyProxy.showAllSongs());
+
         log.info(songifyProxy.getById(2));
+
+        CreateNewSongDto createNewSongDto = new CreateNewSongDto("song5", "Pelson");
+        songifyProxy.addSong(createNewSongDto);
+        log.info("You added new song, songName: " + createNewSongDto.songName() + ", artist: " + createNewSongDto.artist());
+
     }
 }
