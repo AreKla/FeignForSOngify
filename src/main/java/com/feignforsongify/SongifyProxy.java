@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @FeignClient(name = "songify-client", configuration = FeignClientConfiguration.class)
-//@FeignClient(name = "songify-client")
-
 @Component
 public interface SongifyProxy {
 
