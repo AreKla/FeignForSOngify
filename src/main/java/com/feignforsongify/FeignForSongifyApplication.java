@@ -26,29 +26,15 @@ public class FeignForSongifyApplication {
     public void makeRequest() {
         log.info("---------------");
         log.info(songifyProxy.showAllSongs());
-
-        log.info(songifyProxy.getById(2));
-
+        log.info(songifyProxy.getById(1));
         CreateNewSongDto createNewSongDto = new CreateNewSongDto("song5", "Pelson");
         songifyProxy.addSong(createNewSongDto);
-        log.info("You added new song, songName: " + createNewSongDto.songName() + ", artist: " + createNewSongDto.artist());
-        log.info("---------------");
-        log.info(songifyProxy.showAllSongs());
-
+        log.info("You added new song, songName: " + createNewSongDto.songName() + ", artist: " +
+                 createNewSongDto.artist());
         songifyProxy.deleteSongByPathVariable(2);
-        log.info("---------------");
-        log.info(songifyProxy.showAllSongs());
-
         songifyProxy.deleteByQueryParam(3);
-        log.info("---------------");
-        log.info(songifyProxy.showAllSongs());
-
-//        songifyProxy.putSongById(5, new PutSongByIdDto("song6", "Zawiałow"));
-//        log.info("---------------");
-//        log.info(songifyProxy.showAllSongs());
-
-//        songifyProxy.patchSongById(4, new PatchSongByIdDto(null, "U2"));
-        songifyProxy.partiallyUpdateSong(4, new PartiallyUpdateSongRequestDto("asasas", "mnmnmn"));
+        songifyProxy.putSongById(1, new PutSongByIdDto("song6", "Zawiałow"));
+        songifyProxy.patchSongById(4, new PatchSongByIdDto("song7", "U2"));
         log.info("---------------");
         log.info(songifyProxy.showAllSongs());
     }

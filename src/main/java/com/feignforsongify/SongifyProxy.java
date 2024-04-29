@@ -1,13 +1,14 @@
 package com.feignforsongify;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@FeignClient("songify-client")
+@FeignClient(name = "songify-client", configuration = FeignClientConfiguration.class)
+//@FeignClient(name = "songify-client")
+
 @Component
 public interface SongifyProxy {
 
@@ -31,8 +32,4 @@ public interface SongifyProxy {
 
     @PatchMapping("/songs/{id}")
     Song patchSongById(@PathVariable("id") long id, @RequestBody PatchSongByIdDto song);
-
-    @PatchMapping("/songs/{id}")
-    ResponseEntity<PartiallyUpdateSongResponseDto> partiallyUpdateSong(@PathVariable("id") Integer id,
-                                                                       @RequestBody PartiallyUpdateSongRequestDto request);
 }
